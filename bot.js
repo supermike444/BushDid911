@@ -8,6 +8,7 @@ function respond() {
   var ayyRegex = /^ayy$/;
   var wewRegex = /^wew$/;
   var oogaRegex = /^ooga$/;
+  var kysRegex = /^kys$/;
   
 
   if(request.text && ayyRegex.test(request.text)) {
@@ -23,6 +24,11 @@ function respond() {
   else if (request.text && oogaRegex.test(request.text)) {
     this.res.writeHead(200);
     postMessage("booga");
+    this.res.end();
+  }
+  else if (request.text && kysRegex.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("brb kms");
     this.res.end();
   }
   else {
