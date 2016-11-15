@@ -7,6 +7,7 @@ function respond() {
   var request = JSON.parse(this.req.chunks[0]);
   var ayyRegex = /^ayy$/;
   var wewRegex = /^wew$/;
+  var oogaRegex = /^ooga$/;
   
 
   if(request.text && ayyRegex.test(request.text)) {
@@ -17,6 +18,11 @@ function respond() {
   else if (request.text && wewRegex.test(request.text)) {
     this.res.writeHead(200);
     postMessage("lad");
+    this.res.end();
+  }
+  else if (request.text && oogaRegex.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("booga");
     this.res.end();
   }
   else {
