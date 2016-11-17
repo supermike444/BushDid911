@@ -9,6 +9,8 @@ function respond() {
   var wewRegex = /^wew$/;
   var oogaRegex = /^ooga$/;
   var kysRegex = /^kys$/;
+  var thankRegex = /^thank$/;
+  
   
 
   if(request.text && ayyRegex.test(request.text)) {
@@ -29,6 +31,11 @@ function respond() {
   else if (request.text && kysRegex.test(request.text)) {
     this.res.writeHead(200);
     postMessage("brb kms");
+    this.res.end();
+  }
+  else if (request.text && thankRegex.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("welc");
     this.res.end();
   }
   else {
