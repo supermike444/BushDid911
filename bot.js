@@ -11,9 +11,10 @@ function respond() {
   var kysRegex = /^kys$/;
   var thankRegex = /^thank$/;
   var dootRegex = /^doot$/;
+  var heheRegex = /^hehe$/;
   
   
-if (request.name != "wew ayy ooga kys thank doot") {
+if (request.name != "wew ayy ooga kys thank doot hehe") {
   if(request.text && ayyRegex.test(request.text)) {
     this.res.writeHead(200);
     postMessage("lmao");
@@ -42,6 +43,11 @@ if (request.name != "wew ayy ooga kys thank doot") {
   else if (request.text && dootRegex.test(request.text)) {
     this.res.writeHead(200);
     postMessage("doot");
+    this.res.end();
+  }
+  else if (request.text && heheRegex.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("xd");
     this.res.end();
   }
   else {
