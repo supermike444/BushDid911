@@ -12,9 +12,10 @@ function respond() {
   var thankRegex = /^thank$/;
   var dootRegex = /^doot$/;
   var heheRegex = /^hehe$/;
+  var imageRegex = /^image$/;
   
   
-if (request.name != "wew ayy ooga kys thank doot hehe") {
+if (request.name != "wew ayy ooga kys thank doot hehe image") {
   if(request.text && ayyRegex.test(request.text)) {
     this.res.writeHead(200);
     postMessage("lmao");
@@ -50,6 +51,11 @@ if (request.name != "wew ayy ooga kys thank doot hehe") {
     postMessage("xd");
     this.res.end();
   }
+  else if (request.text && imageRegex.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage2();
+    this.res.end();
+  }
   else {
     console.log("don't care");
     this.res.writeHead(200);
@@ -62,6 +68,52 @@ function postMessage(input) {
   var botResponse, options, body, botReq;
 
   botResponse = input;
+
+  options = {
+    hostname: 'api.groupme.com',
+    path: '/v3/bots/post',
+    method: 'POST'
+  };
+
+  body = {
+    "bot_id" : botID,
+    "text" : botResponse
+  };
+
+  console.log('sending ' + botResponse + ' to ' + botID);
+
+  botReq = HTTPS.request(options, function(res) {
+      if(res.statusCode == 202) {
+        //neat
+      } else {
+        console.log('rejecting bad status code ' + res.statusCode);
+      }
+  });
+
+  botReq.on('error', function(err) {
+    console.log('error posting message '  + JSON.stringify(err));
+  });
+  botReq.on('timeout', function(err) {
+    console.log('timeout posting message '  + JSON.stringify(err));
+  });
+  botReq.end(JSON.stringify(body));
+}
+
+function postMessage2() {
+  var botResponse, options, body, botReq;
+
+  var textuals = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for( var i=0; i < 5; i++ )
+        textuals += possible.charAt(Math.floor(Math.random() * possible.length));
+  
+  var stringerino = "http://i.imgur.com/";
+  var string2 = ".png";
+  var penultimate = stringerino.concat(textuals);
+  var ultimate = penultimate.concat(string2);
+  
+  botResponse = ultimate;
 
   options = {
     hostname: 'api.groupme.com',
