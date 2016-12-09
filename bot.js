@@ -13,6 +13,7 @@ function respond() {
   var dootRegex = /^doot$/;
   var heheRegex = /^hehe$/;
   var imageRegex = /^image$/;
+  var rouletteRegex = /^end me$/;
   
   
 if (request.name != "wew ayy ooga kys thank doot hehe image") {
@@ -56,11 +57,17 @@ if (request.name != "wew ayy ooga kys thank doot hehe image") {
     postMessage2();
     this.res.end();
   }
+  else if (request.text && rouletteRegex.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage3();
+    this.res.end();
+  }
   else {
     console.log("don't care");
     this.res.writeHead(200);
     this.res.end();
   }
+  
 }
 }
 
@@ -99,6 +106,8 @@ function postMessage(input) {
   botReq.end(JSON.stringify(body));
 }
 
+//========================================================================================================
+
 function postMessage2() {
   var botResponse, options, body, botReq;
 
@@ -114,6 +123,91 @@ function postMessage2() {
   var ultimate = penultimate.concat(string2);
   
   botResponse = ultimate;
+
+  options = {
+    hostname: 'api.groupme.com',
+    path: '/v3/bots/post',
+    method: 'POST'
+  };
+
+  body = {
+    "bot_id" : botID,
+    "text" : botResponse
+  };
+
+  console.log('sending ' + botResponse + ' to ' + botID);
+
+  botReq = HTTPS.request(options, function(res) {
+      if(res.statusCode == 202) {
+        //neat
+      } else {
+        console.log('rejecting bad status code ' + res.statusCode);
+      }
+  });
+
+  botReq.on('error', function(err) {
+    console.log('error posting message '  + JSON.stringify(err));
+  });
+  botReq.on('timeout', function(err) {
+    console.log('timeout posting message '  + JSON.stringify(err));
+  });
+  botReq.end(JSON.stringify(body));
+}
+
+//==========================================================================================================
+
+function postMessage3() {
+  var botResponse, options, body, botReq;
+
+  var textuals = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for( var i=0; i < 5; i++ )
+        textuals += possible.charAt(Math.floor(Math.random() * possible.length));
+  
+  var randomnum = Math.floor((Math.random() * 60) + 1);
+  if (randomnum > 59)
+    {
+        botResponse = "DUMPSTERED";
+    }
+    else if (randomnum > 58)
+    {
+        botResponse = "BANOODLED";
+    }
+  else if (randomnum > 57)
+    {
+        botResponse = "CUCKED";
+    }
+  else if (randomnum > 56)
+    {
+        botResponse = "PUT IN THE GROUND";
+    }
+  else if (randomnum > 55)
+    {
+        botResponse = "EZ'D";
+    }
+  else if (randomnum > 54)
+    {
+        botResponse = "DOOTED";
+    }
+  else if (randomnum > 53)
+    {
+        botResponse = "WEWLAD'D";
+    }
+  else if (randomnum > 52)
+    {
+        botResponse = "OOGA BOOGA'D";
+    }
+  else if (randomnum > 51)
+    {
+        botResponse = "ENDED";
+    }
+  else if (randomnum > 50)
+    {
+        botResponse = "REST IN RIPPERONI";
+    }
+  else botResponse = "Miss!"
+  
 
   options = {
     hostname: 'api.groupme.com',
