@@ -184,7 +184,7 @@ function postMessage3() {
     }
   else if (randomnum > 55)
     {
-        botResponse = "EZ'D";
+        botResponse = "RIP IN RESTERONI";
     }
   else if (randomnum > 54)
     {
