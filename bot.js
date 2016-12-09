@@ -13,6 +13,7 @@ function respond() {
   var dootRegex = /^doot$/;
   var heheRegex = /^hehe$/;
   var imageRegex = /^image$/;
+  var ImageRegex = /^Image$/;
   var rouletteRegex = /^end me$/;
   
   
@@ -53,6 +54,11 @@ if (request.name != "wew ayy ooga kys thank doot hehe image") {
     this.res.end();
   }
   else if (request.text && imageRegex.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage2();
+    this.res.end();
+  }
+  else if (request.text && ImageRegex.test(request.text)) {
     this.res.writeHead(200);
     postMessage2();
     this.res.end();
