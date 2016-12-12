@@ -15,6 +15,7 @@ function respond() {
   var imageRegex = /^image$/;
   var ImageRegex = /^Image$/;
   var rouletteRegex = /^end me$/;
+  var ggRegex = /^gg$/;
   
   
 if (request.name != "wew ayy ooga kys thank doot hehe image") {
@@ -66,6 +67,11 @@ if (request.name != "wew ayy ooga kys thank doot hehe image") {
   else if (request.text && rouletteRegex.test(request.text)) {
     this.res.writeHead(200);
     postMessage3();
+    this.res.end();
+  }
+  else if (request.text && ggRegex.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("end your life faggot");
     this.res.end();
   }
   else {
