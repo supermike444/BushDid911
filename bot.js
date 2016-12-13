@@ -16,6 +16,7 @@ function respond() {
   var ImageRegex = /^Image$/;
   var rouletteRegex = /^end me$/;
   var ggRegex = /^gg$/;
+  var reportedRegex = /^reported$/;
   
   
 if (request.name != "wew ayy ooga kys thank doot hehe image") {
@@ -72,6 +73,11 @@ if (request.name != "wew ayy ooga kys thank doot hehe image") {
   else if (request.text && ggRegex.test(request.text)) {
     this.res.writeHead(200);
     postMessage("end your life faggot");
+    this.res.end();
+  }
+  else if (request.text && reportedRegex.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("Ihre Berichtseinreichung wurde an die Valve-Unterstützung gesendet. Vielen Dank für die Gemeinschaft der bessere Ort!");
     this.res.end();
   }
   else {
