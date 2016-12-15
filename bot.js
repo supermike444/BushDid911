@@ -282,8 +282,16 @@ function postMessage4() {
   var penultimate = stringerino.concat(textuals);
   var ultimate = penultimate.concat(string2);
   
-  botResponse = cool();
+  
+  var poopy;
+  var dingus = [];
+  for (poopy =  0; poopy < 50; poopy++)
+  {
+  dingus[poopy] = cool();
+  }
 
+  botResponse = (dingus.toString()).replace(/,/g, '\n');
+  
   options = {
     hostname: 'api.groupme.com',
     path: '/v3/bots/post',
