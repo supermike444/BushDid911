@@ -83,10 +83,7 @@ if (request.name != "wew ayy ooga kys thank doot hehe image") {
   }
   else if (request.text && coolRegex.test(request.text)) {
     this.res.writeHead(200);
-    var wieners;
-    for (wieners = 0; wieners < 50; wieners++) {
     postMessage4();
-    }
     this.res.end();
   }
   else {
