@@ -18,6 +18,7 @@ function respond() {
   var ggRegex = /^gg$/;
   var reportedRegex = /^reported$/;
   var coolRegex = /^cls2$/;
+  var succRegex = /^Succ?$/;
   
   
 if (request.name != "wew ayy ooga kys thank doot hehe image") {
@@ -54,6 +55,11 @@ if (request.name != "wew ayy ooga kys thank doot hehe image") {
   else if (request.text && heheRegex.test(request.text)) {
     this.res.writeHead(200);
     postMessage("xd");
+    this.res.end();
+  }
+  else if (request.text && succRegex.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("Succ.");
     this.res.end();
   }
   else if (request.text && imageRegex.test(request.text)) {
