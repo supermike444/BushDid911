@@ -18,7 +18,7 @@ function respond() {
   var ggRegex = /^gg$/;
   var reportedRegex = /^reported$/;
   var coolRegex = /^cls2$/;
-  var succRegex = /^Succ?$/;
+  var succRegex = /^Succ\?$/;
   
   
 if (request.name != "wew ayy ooga kys thank doot hehe image") {
