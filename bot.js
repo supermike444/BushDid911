@@ -59,7 +59,7 @@ if (request.name != "wew ayy ooga kys thank doot hehe image") {
   }
   else if (request.text && succRegex.test(request.text)) {
     this.res.writeHead(200);
-    postMessage("Succ.");
+    postMessageSucc();
     this.res.end();
   }
   else if (request.text && imageRegex.test(request.text)) {
@@ -294,6 +294,50 @@ function postMessage4() {
   }
 
   botResponse = (dingus.toString()).replace(/,/g, '\n');
+  
+  options = {
+    hostname: 'api.groupme.com',
+    path: '/v3/bots/post',
+    method: 'POST'
+  };
+
+  body = {
+    "bot_id" : botID,
+    "text" : botResponse
+  };
+
+  console.log('sending ' + botResponse + ' to ' + botID);
+
+  botReq = HTTPS.request(options, function(res) {
+      if(res.statusCode == 202) {
+        //neat
+      } else {
+        console.log('rejecting bad status code ' + res.statusCode);
+      }
+  });
+
+  botReq.on('error', function(err) {
+    console.log('error posting message '  + JSON.stringify(err));
+  });
+  botReq.on('timeout', function(err) {
+    console.log('timeout posting message '  + JSON.stringify(err));
+  });
+  botReq.end(JSON.stringify(body));
+}
+
+function postMessageSucc() {
+  var botResponse, options, body, botReq;
+
+  var randomnum = Math.floor((Math.random() * 50) + 1);
+
+  if (randomnum > 25)
+    {
+        botResponse = "Succ.";
+    }
+    else
+    {
+        botResponse = "No succ.";
+    }
   
   options = {
     hostname: 'api.groupme.com',
