@@ -12,6 +12,8 @@ function respond() {
   var thankRegex = /^thank$/;
   var dootRegex = /^doot$/;
   var heheRegex = /^hehe$/;
+  var SameRegex = /^Same$/;
+  var sameRegex = /^same$/;
   var imageRegex = /^image$/;
   var ImageRegex = /^Image$/;
   var rouletteRegex = /^end me$/;
@@ -30,6 +32,16 @@ if (request.name != "wew ayy ooga kys thank doot hehe image") {
   else if (request.text && wewRegex.test(request.text)) {
     this.res.writeHead(200);
     postMessage("lad");
+    this.res.end();
+  }
+  else if (request.text && sameRegex.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("same");
+    this.res.end();
+  }
+  else if (request.text && SameRegex.test(request.text)) {
+    this.res.writeHead(200);
+    postMessage("Same");
     this.res.end();
   }
   else if (request.text && oogaRegex.test(request.text)) {
