@@ -23,7 +23,7 @@ function respond() {
   var succRegex = /^Succ\?$/;
   
   
-if (request.name != "wew ayy ooga kys thank doot hehe image") {
+if (request.name != "same") {
   if(request.text && ayyRegex.test(request.text)) {
     this.res.writeHead(200);
     postMessage("lmao");
