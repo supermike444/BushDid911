@@ -342,14 +342,18 @@ function postMessageSucc() {
 
   var randomnum = Math.floor((Math.random() * 50) + 1);
 
-  if (randomnum > 25)
+  if (randomnum > 26)
     {
         botResponse = "Succ.";
     }
-    else
+    else if (randomnum > 2)
     {
         botResponse = "No succ.";
     }
+  else
+  {
+    botResponse = "Zucc.";
+  }
   
   options = {
     hostname: 'api.groupme.com',
