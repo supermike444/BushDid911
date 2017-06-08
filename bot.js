@@ -16,6 +16,7 @@ function respond() {
   var sameRegex = /^same$/;
   var imageRegex = /^image$/;
   var ImageRegex = /^Image$/;
+  var ImageNumRegex = /^image \d$/;
   var rouletteRegex = /^end me$/;
   var ggRegex = /^gg$/;
   var reportedRegex = /^reported$/;
@@ -83,6 +84,18 @@ if (request.name != "same") {
     this.res.writeHead(200);
     postMessage2();
     this.res.end();
+  }
+  else if (request.text && ImageNumRegex.test(request.text)) {
+    
+    var wewString = request.text;
+    var splitWewString = wewString.substr(6,1);
+    var b;
+    for (b = 0; b < splitWewString; b++)
+    {
+      this.res.writeHead(200);
+      postMessage2();
+      this.res.end();
+    }
   }
   else if (request.text && rouletteRegex.test(request.text)) {
     this.res.writeHead(200);
@@ -195,6 +208,8 @@ function postMessage2() {
   });
   botReq.end(JSON.stringify(body));
 }
+
+//========================================================================================================
 
 //==========================================================================================================
 
