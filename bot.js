@@ -14,9 +14,6 @@ function respond() {
   var heheRegex = /^hehe$/;
   var SameRegex = /^Same$/;
   var sameRegex = /^same$/;
-  var imageRegex = /^image$/;
-  var ImageRegex = /^Image$/;
-  var ImageNumRegex = /^image \d$/;
   var rouletteRegex = /^end me$/;
   var ggRegex = /^gg$/;
   var reportedRegex = /^reported$/;
