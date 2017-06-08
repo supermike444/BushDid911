@@ -16,7 +16,6 @@ function respond() {
   var sameRegex = /^same$/;
   var imageRegex = /^image$/;
   var ImageRegex = /^Image$/;
-  var ImageNumRegex = /^image \d$/;
   var rouletteRegex = /^end me$/;
   var ggRegex = /^gg$/;
   var reportedRegex = /^reported$/;
@@ -89,9 +88,13 @@ if (request.name != "same") {
     
     var wewString = request.text;
     var splitWewString = wewString.substr(6,1);
+    var b;
+    for (b = 0; b < splitWewString; b++)
+    {
       this.res.writeHead(200);
-      postMessageImage(splitWewString);
+      postMessage2();
       this.res.end();
+    }
   }
   else if (request.text && rouletteRegex.test(request.text)) {
     this.res.writeHead(200);
@@ -206,55 +209,6 @@ function postMessage2() {
 }
 
 //========================================================================================================
-
-function postMessageImage(instance) {
-  var botResponse, options, body, botReq;
-
-  var textuals = "";
-  var b;
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-for (b = 0; b < instance; b++)
-{
-    for( var i=0; i < 5; i++ )
-        textuals += possible.charAt(Math.floor(Math.random() * possible.length));
-  
-  var stringerino = "http://i.imgur.com/";
-  var string2 = ".png";
-  var penultimate = stringerino.concat(textuals);
-  var ultimate = penultimate.concat(string2);
-  
-  botResponse = ultimate;
-
-  options = {
-    hostname: 'api.groupme.com',
-    path: '/v3/bots/post',
-    method: 'POST'
-  };
-
-  body = {
-    "bot_id" : botID,
-    "text" : botResponse
-  };
-
-  console.log('sending ' + botResponse + ' to ' + botID);
-
-  botReq = HTTPS.request(options, function(res) {
-      if(res.statusCode == 202) {
-        //neat
-      } else {
-        console.log('rejecting bad status code ' + res.statusCode);
-      }
-  });
-
-  botReq.on('error', function(err) {
-    console.log('error posting message '  + JSON.stringify(err));
-  });
-  botReq.on('timeout', function(err) {
-    console.log('timeout posting message '  + JSON.stringify(err));
-  });
-  botReq.end(JSON.stringify(body));
-}
-}
 
 //==========================================================================================================
 
