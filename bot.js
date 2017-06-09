@@ -72,28 +72,6 @@ if (request.name != "same") {
     postMessageSucc();
     this.res.end();
   }
-  else if (request.text && imageRegex.test(request.text)) {
-    this.res.writeHead(200);
-    postMessage2();
-    this.res.end();
-  }
-  else if (request.text && ImageRegex.test(request.text)) {
-    this.res.writeHead(200);
-    postMessage2();
-    this.res.end();
-  }
-  else if (request.text && ImageNumRegex.test(request.text)) {
-    
-    var wewString = request.text;
-    var splitWewString = wewString.substr(6,1);
-    var b;
-    for (b = 0; b < splitWewString; b++)
-    {
-      this.res.writeHead(200);
-      postMessage2();
-      this.res.end();
-    }
-  }
   else if (request.text && rouletteRegex.test(request.text)) {
     this.res.writeHead(200);
     postMessage3();
