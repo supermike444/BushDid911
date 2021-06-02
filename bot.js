@@ -79,7 +79,7 @@ if (request.name != "same") {
   }
   else if (request.text && ggRegex.test(request.text)) {
     this.res.writeHead(200);
-    postMessage("end your life faggot");
+    postMessage("end your life heterosexual");
     this.res.end();
   }
   else if (request.text && reportedRegex.test(request.text)) {
